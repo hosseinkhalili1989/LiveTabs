@@ -67,7 +67,7 @@ const NewTabs = new LiveTabs( config ,'NewTabs');
 <div id="LiveTabsContainer">
 </div> 
 ```
-4. Create your links and use `createTab ( title , tabId , callback )` method. It takes 3 parameters . The first param is the title of the tab, the second param is a unique number given to each tab and its corresponding container, the third param is an optional callback function to run after the tab is created.You can use the callback function to populate the container with content taken from server or other contents.
+4. Create your links and use `createTab ( title , tabId , closure )` method. It takes 3 parameters . The first param is the title of the tab, the second param is a unique number given to each tab and its corresponding container, the third param is an optional callback function to run after the tab is created.You can use the callback function to populate the container with content taken from server or other contents.
 
 ### Note : You can create the links dynamically so that they create dynamic tabs or have some links and use them to create dynamic tabs.
 
@@ -75,7 +75,7 @@ const NewTabs = new LiveTabs( config ,'NewTabs');
 /*
 * @param {string} title title of the tab
 * @param {integer} tabId unique number for each tab
-* @param {function} callback a callback function
+* @param {closure} callback a callback function
 */
 
 
