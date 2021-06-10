@@ -1,9 +1,9 @@
 # LiveTabs
 ## Table of content
-*["Description"] (#description)
-*["Goals"] (#goals)
-*["Technologies"] (#technologies)
-*["Setup"] (#setup)
+* ["Description"] (#description)
+* ["Goals"] (#goals)
+* ["Technologies"] (#technologies)
+* ["Setup"] (#setup)
 
 
 ## Description 
