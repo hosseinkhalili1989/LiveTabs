@@ -1,0 +1,232 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveTabs examples</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <style>
+        .liveTab-closebtn{
+            width:0.35rem;
+        }
+    /* .activeitem > .nav-link{
+            position:relative;
+            margin-bottom:-3px !important;
+        }
+        .activeitem .nav-link button{
+            position:absolute;
+            right:0;
+            top:0;
+            padding:0.7rem 1rem;
+        }*/
+        .nav-link{
+            display:flex;
+        }
+        .livetabs-grow{
+            flex-grow:0.7;
+        }
+        .livetabs-animate{
+            
+            animation:0.5s;
+            animation-timing-function:ease;
+            animation-name:livetabsanimation;
+
+        }
+        .nav-link span{
+            flex-grow:1;
+        }
+        @keyframes livetabsanimation{
+            from{flex-grow:0.1}
+            to{flex-grow:0.7}
+        }
+    </style>
+
+    <link rel="stylesheet" href="../themes/theme1/theme1.css">
+
+     <script src="../LiveTabs.js" ></script>
+    <script>
+    //import { LiveTabs } from "../LiveTabs.js";
+
+        const config = {
+            tabContainer :'liveTabs_Tabs',
+            tabContentContainer:'LiveTabsContainer',
+            largeTabs:true,
+            animate:true
+        }
+        
+        // const NewTabs = new LiveTabs ([
+        //     tabContainer : 'liveTabs_Tabs',
+        //     tabContentContainer : 'LiveTabsContainer',
+        //     objname : 'NewTabs'
+        // ]);
+
+        const NewTabs = new LiveTabs( config ,'NewTabs');
+    
+        
+
+       
+     
+        function content(text , id){
+          
+          var content = '<div class="container"><p class="lead">This is for tab number '+id+'</p>';
+            content +='<p>This is random number .'+Math.random()+'</p>';
+
+            content += '<p>Content of each tab can vary depending your usage. You can easily switch between the tabs or you can close the tabs you dont need.</p>';
+            content += '<p>The current tab is => '+id+'</p>';
+            
+           content +='<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus fuga exercitationem dolor impedit in voluptates consequatur pariatur eos animi iure, provident sint dolore voluptatibus nostrum porro, facere earum, at officia!</p></div>';
+
+            //document.getElementById('LiveTabsContainer'+id).innerHTML+='<p>This is for tab number '+id+'</p>';
+            document.getElementById('LiveTabsContainer'+id).innerHTML+=content;
+         }
+    </script>
+</head>
+<body>
+    
+    <nav>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">LiveTabs</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a href="#example" class="nav-link">Example</a></li>
+                <li class="nav-item"><a href="#description" class="nav-link">Description</a></li>
+                <li class="nav-item"><a href="#setup" class="nav-link">Set Up</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="row my-4 text-center">
+            <h1>LiveTabs</h1>
+            <p>A beautiful , manageable way to create dynamic tabs with live data</p>
+        </div>
+        <div class="row" id="example">
+            <h2>Example:</h2>
+            <div class="col-md-3">
+                <h4>Links to create tabs</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                    <a href="javascript:void(0);" onclick="NewTabs.createTab('Tab1', 1 ,function(){content('',1)})">Create tab 1</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" onclick="NewTabs.createTab('Tab2', 2 ,function(){content('',2)})">Create tab 2</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" onclick="NewTabs.createTab('Tab3', 3 ,function(){content('',3)})">Create tab 3</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" onclick="NewTabs.createTab('Tab4', 4 ,function(){content('',4)})">Create tab 4</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" onclick="NewTabs.createTab('Tab5', 5 ,function(){content('',5)})">Create tab 5</a></li>
+                  </ul>
+
+            </div>
+            <div class="col-md-2">
+
+            </div>
+
+            <div class="col-md-7">
+                <h4>Tabs bar</h4>
+             <div class="tab" role="tabpanel">
+                <ul class="nav nav-tabs" id="liveTabs_Tabs">
+                <!--
+                  <li id="liveTabs_Tabs1" class="d-inlineblock nav-item flex-grow-1 activeitem"><a href="javascript:void(0);return false;" id="liveTabs_Tabsa1" onclick="NewTabs.switchTab(1);return false" title="Tab1" class="nav-link active"><span>Tab1</span><button type="button" class="btn-close ms-3 liveTab-closebtn" aria-label="Close" onclick="NewTabs.closeTab(1)"></button>
+<li id="liveTabs_Tabs2" class="d-inlineblock nav-item"><a href="javascript:void(0);return false;" id="liveTabs_Tabsa2" onclick="NewTabs.switchTab(2);return false" title="Tab2" class="nav-link"><span>Tab2</span><button type="button" class="btn-close ms-3 liveTab-closebtn" aria-label="Close" onclick="NewTabs.closeTab(2)"></button></a></li>
+<li id="liveTabs_Tabs3" class="d-inlineblock nav-item"><a href="javascript:void(0);return false;" id="liveTabs_Tabsa3" onclick="NewTabs.switchTab(3);return false" title="Tab3" class="nav-link"><span>Tab3</span><button type="button" class="btn-close ms-3 liveTab-closebtn" aria-label="Close" onclick="NewTabs.closeTab(3)"></button></a></li>
+<li id="liveTabs_Tabs4" class="d-inlineblock nav-item"><a href="javascript:void(0);return false;" id="liveTabs_Tabsa4" onclick="NewTabs.switchTab(4);return false" title="Tab4" class="nav-link"><span>Tab4</span><button type="button" class="btn-close ms-3 liveTab-closebtn" aria-label="Close" onclick="NewTabs.closeTab(4)"></button></a></li>
+<li id="liveTabs_Tabs5" class="d-inlineblock nav-item"><a href="javascript:void(0);return false;" id="liveTabs_Tabsa5" onclick="NewTabs.switchTab(5);return false" title="Tab5" class="nav-link"><span>Tab5</span><button type="button" class="btn-close ms-3 liveTab-closebtn" aria-label="Close" onclick="NewTabs.closeTab(5)"></button></a></li>
+-->
+                  </ul>
+                 <div id="LiveTabsContainer" class="tab-content tabs">
+                     
+                 </div> 
+             </div>
+
+            </div>
+        </div>
+
+        <div class="row mt-5" id="description">
+            <h2>Description:</h2>
+            <div class="col">
+                <p>LiveTabs is a Javascript library that allows you to create and manage tabs dynamically on the fly. This library gives the ability to your application to act like browser tabs, making dynamic tabs.
+            
+                    LiveTabs is made by love to enrich web applications. It was first used in an RSS reader application called apaland.com to show different news in tabs at the same time.</p>
+
+            </div>
+        </div>
+
+        <div class="row mt-5" id="setup">
+            <h2>Set up:</h2>
+            <div class="col">
+                
+                <pre class="chroma">
+                    To use LiveTabs do the following steps:
+### Note : You should create dynamic links so that creating dynamic tabs becomes meaningful!
+
+1. download suitable version of the LiveTab file ( LiveTabs.esm.js or LiveTabs.js )
+
+* First method :
+<code class="lang-javascript">
+
+<script src="LiveTabs.js"></script>
+
+</code>
+
+* Second method :
+```javascript
+import { LiveTabs } from LiveTabs.js
+```
+2. Make an instance of `LiveTabs` and set the `config`.
+* `tabcontainer` is the div that holds the tabs.
+* `tabContentContainer` is the div that holds the content related to each tab
+* make a new instance of `LiveTabs`, pass the `config` and the name of the variable as a string for the second parameter 
+
+```javascript
+const config = {
+    //name of the Tab div
+    tabContainer :'liveTabs_Tabs',
+
+    //name of the content div
+    tabContentContainer:'LiveTabsContainer'
+}
+        
+
+const NewTabs = new LiveTabs( config ,'NewTabs');
+    
+```
+3. Prepare HTML codes for Tabs and contents related to the tabs. The id of the divs must match the `config` variable.
+
+```HTML
+<!--Tabs will be placed here-->
+<ul class="nav nav-tabs" id="liveTabs_Tabs">
+</ul>
+
+<!--content of the tabs will be here-->
+<div id="LiveTabsContainer">
+</div> 
+```
+4. Create your links and use `createTab ( title , tabId , callback )` method. It takes 3 parameters . The first param is the title of the tab, the second param is a unique number given to each tab and its corresponding container, the third param is an optional callback function to run after the tab is created.You can use the callback function to populate the container with content taken from server or other contents.
+
+### Note : You can create the links dynamically so that they create dynamic tabs or have some links and use them to create dynamic tabs.
+
+```javascript
+/*
+* @param {string} title title of the tab
+* @param {integer} tabId unique number for each tab
+* @param {function} callback a callback function
+*/
+
+
+NewTabs.createTab( title , tabId , callback)
+
+//example 1:
+NewTabs.createTab('Title', 1 , ajaxContent('aboutPage' ,1 ));
+
+//example 2:
+ <li class="list-group-item"><a href="#" onclick="NewTabs.createTab('Trending Now!', 2 ,function(){ document.getElementById(config.tabContentContainer+2).text = 'Trending Now!';})">What's trending Now</a></li>
+```
+                </pre>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        
+        
+    </script>
+</body>
+</html>
